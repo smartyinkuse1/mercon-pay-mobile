@@ -1,0 +1,15 @@
+<ion-content>
+  <p class="ion-text-center mt-5 text-dark fw-bold">{{title === 'merchant' ? 'Merchant' : 'Consumer'}} Registration</p>
+  <p class="ion-padding ion-text-center light">Kindly enter the following details to complete your registration.</p>
+  <div style="display: flex; flex-direction: column; margin-top: 52px;">
+    <input type="email" placeholder="Email" class="email-input">
+    <input type="email" placeholder="Username" class="email-input">
+    <input type="password" placeholder="Password" class="password-input">
+    <input type="password" placeholder="Confirm password" class="password-input">
+    <a class="ion-text-right ion-padding">Forgot password?</a>
+  </div>
+  <ion-button expand="full" class="text-dark mt-5 ion-padding-horizontal br-1">
+    Register
+  </ion-button>
+  <p class="mt-5 ion-text-center">Already have an account? <a routerLink="/login">Login!</a></p>
+</ion-content>

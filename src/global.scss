@@ -24,3 +24,75 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+.fw-700 {
+  font-weight: 700;
+}
+
+.text-sm {
+  font-size: 14px;
+}
+
+.p-3 {
+  padding: 0px;
+}
+
+.mt-3 {
+  margin-top: 24px !important;
+}
+
+.mt-5 {
+  margin-top: 60px !important;
+}
+
+.mt-7 {
+  margin-top: 84px !important;
+}
+
+.bg-dark {
+  background-color: #040303;
+}
+
+.bg-primary {
+  background-color: #E4C3A1;
+}
+
+.bg-secondary {
+  background-color: rgba(228, 195, 161, 0.3);
+}
+
+.br-1 {
+  border-radius: 5px;
+}
+
+.text-dark {
+  color: #040303 !important;
+}
+
+.text-white {
+  color: #ffffff !important;
+}
+
+.fw-bold {
+  font-weight: bold;
+}
+
+.light {
+  color: rgba(4, 3, 15, 0.6);
+}
+
+.email-input {
+  margin: 15px 15px;
+  height: 50px;
+  border: 1px solid #04030FB2;
+  opacity: 0.5;
+  border-radius: 5px;
+}
+
+.password-input {
+  margin: 15px 15px;
+  height: 50px;
+  border: 1px solid #04030FB2;
+  opacity: 0.5;
+  border-radius: 5px;
+}

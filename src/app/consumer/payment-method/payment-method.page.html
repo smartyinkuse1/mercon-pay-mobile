@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar color="dark" class="ion-padding-vertical">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/consumer"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Pay a seller</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-text class="ion-text-center">
+    <p class="mt-3">You can use either of the methods below to pay.</p>
+  </ion-text>
+  <ion-card routerLink="/consumer/payment-search" color="primary">
+    <ion-card-content>
+      <ion-row class="ion-justify-content-between text-dark ion-padding">
+        <p>Search seller ID</p>
+        <ion-icon name="chevron-forward-outline"></ion-icon>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+  <ion-card routerLink="/consumer/payment-scan" color="primary" class="ion-margin-top">
+    <ion-card-content>
+      <ion-row class="ion-justify-content-between text-dark ion-padding">
+        <p>Scan seller barcode</p>
+        <ion-icon name="chevron-forward-outline"></ion-icon>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
