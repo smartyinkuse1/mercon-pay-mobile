@@ -1,0 +1,19 @@
+<ion-toolbar color="dark" class="ion-padding-vertical">
+  <ion-buttons slot="start">
+    <ion-back-button defaultHref="/consumer"></ion-back-button>
+  </ion-buttons>
+  <ion-title>Deposit</ion-title>
+</ion-toolbar>
+<ion-content>
+    <p class="ion-text-center mt-5 text-dark fw-bold">Welcome back!</p>
+    <p class="ion-text-center light">Kindly enter the amount you want to withdraw</p>
+    <form [formGroup]="depositForm" (ngSubmit)="onSubmit()">
+      <div style="display: flex; flex-direction: column; margin-top: 52px;">
+        <input type="number" placeholder="Enter Amount" class="email-input" [ngClass]="{'error': submit && f.amount.errors}" formControlName="amount">
+        <p *ngIf="submit && f.amount.errors" style="margin: 0 15px;" class="error_message">required</p>
+      </div>
+      <ion-button type="submit" [disabled]="submit" expand="full" class="text-dark mt-5 ion-padding-horizontal br-1">
+        Deposit
+      </ion-button>
+    </form>
+</ion-content>

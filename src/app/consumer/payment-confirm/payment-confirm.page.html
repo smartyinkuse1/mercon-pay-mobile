@@ -9,22 +9,24 @@
 
 <ion-content class="text-dark">
   <p class="ion-text-center mt-5">Paying the sum of</p>
-  <ion-card routerLink="/consumer/payment-confirm" color="secondary">
-    <ion-card-content>
-      <ion-row class="ion-justify-content-between text-dark">
-        <ion-input class="bg-secondary br-1"> </ion-input>
-      </ion-row>
-    </ion-card-content>
-  </ion-card>
-  <p class="ion-text-center mt-5">To</p>
-  <ion-card routerLink="/consumer/payment-confirm" color="secondary">
-    <ion-card-content>
-      <p class="ion-text-center">Agbabiaka ventures</p>
-      <p class="ion-text-center">111768</p>
-    </ion-card-content>
-  </ion-card>
+  <form [formGroup]="transferForm" (ngSubmit)="onSubmit()">
+    <ion-card color="secondary">
+      <ion-card-content>
+        <ion-row class="ion-justify-content-between text-dark">
+          <ion-input class="bg-secondary br-1"  formControlName="amount" [ngClass]="{'error': submit && f.amount.errors}"></ion-input>
+        </ion-row>
+      </ion-card-content>
+    </ion-card>
+    <p class="ion-text-center mt-5">To</p>
+    <ion-card color="secondary">
+      <ion-card-content>
+        <p class="ion-text-center">{{recipient?.merchant.businessName}}</p>
+        <p class="ion-text-center">{{recipient?.userName}}</p>
+      </ion-card-content>
+    </ion-card>
 
-  <ion-button expand="full" routerLink="/consumer/payment-complete" class="text-dark mt-5 ion-padding-horizontal br-1">
-    Confirm
-  </ion-button>
+    <ion-button expand="full" type="submit" [disabled]="submit" class="text-dark mt-5 ion-padding-horizontal br-1">
+      Confirm
+    </ion-button>
+  </form>
 </ion-content>

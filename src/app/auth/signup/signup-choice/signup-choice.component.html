@@ -1,15 +1,152 @@
 <ion-content>
-  <p class="ion-text-center mt-5 text-dark fw-bold">{{title === 'merchant' ? 'Merchant' : 'Consumer'}} Registration</p>
-  <p class="ion-padding ion-text-center light">Kindly enter the following details to complete your registration.</p>
-  <div style="display: flex; flex-direction: column; margin-top: 52px;">
-    <input type="email" placeholder="Email" class="email-input">
-    <input type="email" placeholder="Username" class="email-input">
-    <input type="password" placeholder="Password" class="password-input">
-    <input type="password" placeholder="Confirm password" class="password-input">
-    <a class="ion-text-right ion-padding">Forgot password?</a>
-  </div>
-  <ion-button expand="full" class="text-dark mt-5 ion-padding-horizontal br-1">
-    Register
-  </ion-button>
-  <p class="mt-5 ion-text-center">Already have an account? <a routerLink="/login">Login!</a></p>
+  <p class="ion-text-center mt-5 text-dark fw-bold">
+    {{ title === "merchant" ? "Merchant" : "Consumer" }} Registration
+  </p>
+  <p class="ion-padding ion-text-center light">
+    Kindly enter the following details to complete your registration.
+  </p>
+  <form [formGroup]="signupForm" (ngSubmit)="onSignup()">
+    <div style="display: flex; flex-direction: column; margin-top: 52px">
+        <input
+        *ngIf="title === 'consumer'"
+          type="text"
+          placeholder="First Name"
+          formControlName="firstName"
+          class="email-input"
+        />
+        <p
+          *ngIf="submit && f.firstName.errors"
+          style="margin: 0 15px"
+          class="error_message"
+        >
+          minimum of 6 characters
+        </p>
+        <input
+          *ngIf="title === 'consumer'"
+          type="text"
+          placeholder="Last Name"
+          formControlName="lastName"
+          class="email-input"
+        />
+        <p
+          *ngIf="submit && f.firstName.errors"
+          style="margin: 0 15px"
+          class="error_message"
+        >
+          minimum of 6 characters
+        </p>
+        <input
+        *ngIf="title === 'merchant'"
+          type="text"
+          placeholder="Business Name"
+          formControlName="businessName"
+          class="email-input"
+        />
+        <p
+          *ngIf="submit && f.businessName.errors"
+          style="margin: 0 15px"
+          class="error_message"
+        >
+          minimum of 6 characters
+        </p>
+        <input
+        *ngIf="title === 'merchant'"
+          type="text"
+          placeholder="BVN"
+          formControlName="bvn"
+          class="email-input"
+        />
+        <p
+          *ngIf="submit && f.bvn.errors"
+          style="margin: 0 15px"
+          class="error_message"
+        >
+          minimum of 11 characters
+        </p>
+        <input
+        *ngIf="title === 'merchant'"
+          type="text"
+          placeholder="Bank Account Number"
+          formControlName="accountNumber"
+          class="email-input"
+        />
+        <p
+          *ngIf="submit && f.accountNumber.errors"
+          style="margin: 0 15px"
+          class="error_message"
+        >
+          minimum of 10 characters
+        </p>
+      <input
+        type="email"
+        placeholder="Email"
+        formControlName="email"
+        class="email-input"
+        [ngClass]="{ error: submit && f.email.errors }"
+      />
+      <p
+        *ngIf="submit && f.email.errors"
+        style="margin: 0 15px"
+        class="error_message"
+      >
+        must be a valid email
+      </p>
+      <input
+        type="text"
+        placeholder="Username"
+        formControlName="userName"
+        class="email-input"
+      />
+      <p
+        *ngIf="submit && f.userName.errors"
+        style="margin: 0 15px"
+        class="error_message"
+      >
+        minimum of 6 characters
+      </p>
+      <input
+        type="password"
+        placeholder="Password"
+        formControlName="password"
+        class="password-input"
+        [ngClass]="{ error: submit && f.password.errors }"
+      />
+      <p
+        *ngIf="submit && f.password.errors"
+        style="margin: 0 15px"
+        class="error_message"
+      >
+        minimum of 6 characters
+      </p>
+      <input
+        type="password"
+        placeholder="Confirm password"
+        formControlName="confirmPassword"
+        class="password-input"
+      />
+      <p
+        *ngIf="submit && f.confirmPassword.errors"
+        style="margin: 0 15px"
+        class="error_message"
+      >
+        {{
+          f.confirmPassword.errors.notEqual
+            ? 'Password don"t match'
+            : "minimum of 6 characters"
+        }}
+      </p>
+      <!-- <a class="ion-text-right ion-padding">Forgot password?</a> -->
+    </div>
+    <ion-button
+      type="submit"
+      expand="full"
+      [disabled]="submit"
+      class="text-dark mt-5 ion-padding-horizontal br-1"
+    >
+      Register
+    </ion-button>
+  </form>
+  <p class="mt-5 ion-text-center">
+    Already have an account? <a routerLink="/login">Login!</a>
+  </p>
 </ion-content>

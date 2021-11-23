@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes = [
   {
     path: 'consumer',
+    canActivate: [AuthGuard],
     loadChildren: () => import('./consumer/consumer.module').then(m => m.ConsumerPageModule)
   },
   {
@@ -14,10 +16,6 @@ const routes: Routes = [
   {
     path: 'home',
     loadChildren: () => import('./merchant/home/home.module').then( m => m.HomePageModule)
-  },
-  {
-    path: 'payment',
-    loadChildren: () => import('./merchant/payment/payment.module').then( m => m.PaymentPageModule)
   },
   {
     path: 'login',
@@ -34,6 +32,19 @@ const routes: Routes = [
   {
     path: 'landing',
     loadChildren: () => import('./auth/landing/landing.module').then( m => m.LandingPageModule)
+  },
+  {
+    path: 'merchant',
+    canActivate: [AuthGuard],
+    loadChildren: () => import('./merchant/merchant.module').then( m => m.MerchantPageModule)
+  },
+  {
+    path: 'verify',
+    loadChildren: () => import('./auth/verify/verify.module').then( m => m.VerifyPageModule)
+  },
+  {
+    path: 'forgot-password',
+    loadChildren: () => import('./auth/forgot-password/forgot-password.module').then( m => m.ForgotPasswordPageModule)
   },
 ];
 

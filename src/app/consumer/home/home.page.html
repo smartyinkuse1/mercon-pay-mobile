@@ -1,85 +1,45 @@
 <ion-content>
   <div class="ion-padding bg-dark">
-    <h5 class="ion-padding-top text-white">Welcome Olayinka</h5>
-    <p class="text-white">199761</p>
+    <span class="heading">
+      <h5 class="ion-padding-top text-white">Welcome {{user?.consumer?.firstName}}</h5>
+      <ion-icon (click)="onLogout()" size="large" name="log-out-outline"></ion-icon>
+    </span>
+    <p class="text-white">{{user?.userName}}</p>
     <ion-card color="primary">
       <ion-card-content class="ion-margin-top">
         <ion-card-subtitle  class="text-dark ion-text-center"
           >Total balance</ion-card-subtitle
         >
         <ion-card-title  class="text-dark ion-padding-bottom ion-text-center"
-          >₦1000.00</ion-card-title
+          >{{walletDetails?.currentAmount | currency:'₦':'symbol-narrow'}}</ion-card-title
         >
       </ion-card-content>
     </ion-card>
   </div>
   <div>
     <p class="ion-margin">History</p>
-    <ion-list color="">
-      <ion-item>
+    <p *ngIf="transactions?.length === 0" class="ion-text-center" style="margin: 25% 0;">No transactions yet...</p>
+    <ion-list *ngIf="transactions?.length > 0" color="">
+      <ion-item *ngFor="let tran of transactions">
         <ion-label>
           <ion-row class="ion-justify-content-between">
-            <p>JJC Ventures</p>
-            <p>Paid</p>
+            <p>{{ tran?.recipient?.userName || tran?.user?.userName  }}</p>
+            <p>{{tran?.transType | titlecase }}</p>
           </ion-row>
           <ion-row class="ion-justify-content-between ion-margin-top">
-            <p>200765</p>
-            <p class="fw-700">₦1000.00</p>
-          </ion-row>
-        </ion-label>
-      </ion-item>
-      <ion-item>
-        <ion-label>
-          <ion-row class="ion-justify-content-between">
-            <p>JJC Ventures</p>
-            <p>Paid</p>
-          </ion-row>
-          <ion-row class="ion-justify-content-between ion-margin-top">
-            <p>200765</p>
-            <p class="fw-700">₦1000.00</p>
-          </ion-row>
-        </ion-label>
-      </ion-item>
-      <ion-item>
-        <ion-label>
-          <ion-row class="ion-justify-content-between">
-            <p>ABC Ventures</p>
-            <p>Paid</p>
-          </ion-row>
-          <ion-row class="ion-justify-content-between ion-margin-top">
-            <p>200723</p>
-            <p class="fw-700">₦5000.00</p>
-          </ion-row>
-        </ion-label>
-      </ion-item>
-      <ion-item>
-        <ion-label>
-          <ion-row class="ion-justify-content-between">
-            <p>Yah allahu Corps</p>
-            <p>Paid</p>
-          </ion-row>
-          <ion-row class="ion-justify-content-between ion-margin-top">
-            <p>200123</p>
-            <p class="fw-700">₦25000.00</p>
-          </ion-row>
-        </ion-label>
-      </ion-item>
-      <ion-item>
-        <ion-label>
-          <ion-row class="ion-justify-content-between">
-            <p>Simpsons furnitures</p>
-            <p>Paid</p>
-          </ion-row>
-          <ion-row class="ion-justify-content-between ion-margin-top">
-            <p>100134</p>
-            <p class="fw-700">₦10000.00</p>
+            <p>{{tran?.updatedAt | date: 'medium'}}</p>
+            <p class="fw-700">{{(tran?.amount) | currency:'₦':'symbol-narrow' }}</p>
           </ion-row>
         </ion-label>
       </ion-item>
     </ion-list>
+    <ion-row class="ion-margin ion-justify-content-end">
+      <ion-icon *ngIf="this.previous" size="large" name="chevron-back-outline" (click)="onPrev()"></ion-icon>
+      <ion-icon *ngIf="this.next" size="large" name="chevron-forward-outline" (click)="onNext()"></ion-icon>
+    </ion-row>
     <ion-row class="ion-margin ion-justify-content-around">
-      <ion-button class="text-dark" color="secondary"  >Deposit</ion-button>
-      <ion-button class="text-dark" routerLink="/consumer/payment-method" >Pay a seller</ion-button>
+      <ion-button class="text-dark" color="secondary" routerLink="/consumer/deposit">Deposit</ion-button>
+      <ion-button class="text-dark" routerLink="/consumer/payment-method">Pay a seller</ion-button>
     </ion-row>
   </div>
 </ion-content>

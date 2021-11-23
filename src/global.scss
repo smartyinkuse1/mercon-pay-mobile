@@ -82,17 +82,27 @@
 }
 
 .email-input {
-  margin: 15px 15px;
+  margin: 15px 15px 0px;
   height: 50px;
   border: 1px solid #04030FB2;
   opacity: 0.5;
   border-radius: 5px;
+  padding: 0 8px;
 }
 
 .password-input {
-  margin: 15px 15px;
+  margin: 15px 15px 0px;
   height: 50px;
   border: 1px solid #04030FB2;
   opacity: 0.5;
   border-radius: 5px;
+  padding: 0 8px;
+}
+
+.error {
+  border: 1px solid red;
+}
+
+.error_message {
+  color: red;
 }

@@ -25,15 +25,27 @@ const routes: Routes = [
         loadChildren: () => import('./payment-scan/payment-scan.module').then( m => m.PaymentScanPageModule)
       },
       {
-        path: 'payment-confirm',
+        path: 'payment-confirm/:id',
         loadChildren: () => import('./payment-confirm/payment-confirm.module').then( m => m.PaymentConfirmPageModule)
       },
       {
         path: 'payment-complete',
         loadChildren: () => import('./payment-complete/payment-complete.module').then( m => m.PaymentCompletePageModule)
-      }
+      },
+      {
+        path: 'deposit',
+        loadChildren: () => import('./deposit/deposit.module').then( m => m.DepositPageModule)
+      },
+      {
+        path: 'approve',
+        loadChildren: () => import('./approve/approve.module').then( m => m.ApprovePageModule)
+      },
+      {
+        path: 'verify-payment/:id/:amount',
+        loadChildren: () => import('./verify-payment/verify-payment.module').then( m => m.VerifyPaymentPageModule)
+      },
     ]
-  }
+  },
 ];
 
 @NgModule({

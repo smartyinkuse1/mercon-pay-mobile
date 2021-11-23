@@ -1,9 +1,11 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>payment</ion-title>
+  <ion-toolbar color="dark" class="ion-padding-vertical">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/merchant"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Barcode</ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
-
+  <ion-input [(ngModel)]="encodedData"></ion-input>
 </ion-content>

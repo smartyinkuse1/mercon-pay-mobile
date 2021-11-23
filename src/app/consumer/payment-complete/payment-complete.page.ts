@@ -11,6 +11,9 @@ export class PaymentCompletePage implements OnInit {
   constructor(private routerOutlet: IonRouterOutlet) { }
 
   ngOnInit() {
+  }
+
+  ionViewWillEnter() {
     this.routerOutlet.swipeGesture = false;
   }
 

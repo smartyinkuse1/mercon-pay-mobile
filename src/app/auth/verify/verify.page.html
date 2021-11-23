@@ -1,0 +1,19 @@
+<ion-toolbar color="dark" class="ion-padding-vertical">
+  <ion-buttons slot="start">
+    <ion-back-button defaultHref="/auth-choice"></ion-back-button>
+  </ion-buttons>
+  <ion-title>Verify</ion-title>
+</ion-toolbar>
+<ion-content>
+  <p class="ion-text-center mt-5 text-dark fw-bold">Welcome back!</p>
+  <p class="ion-text-center light">Kindly enter the otp sent to your mail</p>
+  <form [formGroup]="verifyForm" (ngSubmit)="onSubmit()">
+    <div style="display: flex; flex-direction: column; margin-top: 52px;">
+      <input type="text" placeholder="Enter OTP" class="email-input" [ngClass]="{'error': submit && f.OTP.errors}" formControlName="OTP">
+      <p *ngIf="submit && f.OTP.errors" style="margin: 0 15px;" class="error_message">must be a valid email</p>
+    </div>
+    <ion-button type="submit" expand="full" class="text-dark mt-5 ion-padding-horizontal br-1">
+      Verify
+    </ion-button>
+  </form>
+</ion-content>

@@ -1,9 +1,26 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>payment-scan</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-toolbar color="dark" class="ion-padding-vertical">
+  <ion-buttons slot="start">
+    <ion-back-button defaultHref="/consumer/payment-method"></ion-back-button>
+  </ion-buttons>
+  <ion-title>Payment scan</ion-title>
+</ion-toolbar>
 
 <ion-content>
+  <ion-card>
+    <ion-button color="danger" (click)="scanBRcode()" expand="block">
+      Scan Barcode
+    </ion-button>
+  </ion-card>
 
+  <ion-card *ngIf="cardState" routerLink="/consumer/payment-confirm/{{merchant.user}}" color="primary">
+    <ion-card-content>
+      <ion-row class="ion-justify-content-between text-dark">
+        <div>
+          <p>{{merchant?.businessName}}</p>
+          <p>{{merchant?.userName}}</p>
+        </div>
+        <ion-icon name="chevron-forward-outline"></ion-icon>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
